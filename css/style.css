@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+.navbar-dark, .bg-dark {
+    background-color: #222 !important;
+}
+
+.navbar-brand {
+    font-weight: 900;
+    font-style: italic;
+    font-size: 32px;
+}
+
+.navbar-brand-sub {
+    color: orangered;
+}
+
+.label {
+    background-color: orangered;
+    display: inline-flex;
+    padding: .14em .14em;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.5;
+    align-content: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    color: #fff;
+}
+
+.label-rounded {
+    padding-left: .7em;
+    padding-right: .7em;
+    border-radius: 1.5em;
+}
+
+.label-text {
+    padding-left: 1rem;
+}
+
+ select:focus, input:focus {
+    border: 2px solid orangered !important;
+    box-shadow: none !important;
+}
+
+.btn-titanium {
+    background-color: orangered;
+    color: #fff;
+    font-weight: 700;
+}
+
+.details {
+    pointer-events: none;
+}
+
+.status-span {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    cursor: default;
+    display: block;
+    margin: 0 auto
+}
+
+button.btn.edit::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f303";
+    font-weight: 900;
+    font-size: 0.8rem;
+    color: rgba(0, 0, 0, 0.54);
+    display: block;
+}
+
+button.btn.delete::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f1f8";
+    font-weight: 900;
+    font-size: 0.8rem;
+    color: rgba(0, 0, 0, 0.54);
+    display: block;
+}
+
+.form-btn {
+    display: inline;
+}
+
+.cards-info {
+    margin: 0;
+    margin-top: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    cursor: default;
+    position: relative;
+}
+
+.cards-info .card-info {
+    display: flex;
+    align-items: center;
+    position: relative;
+    box-shadow: none;
+    cursor: default;
+    overflow: inherit;
+}
+
+.cards-info .card-info > div:last-child {
+    display: flex;
+    margin-left: 20px;
+    width: calc(100% - 40px);
+    height: 70px;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 0;
+    padding-left: 40px;
+    padding-right: 16px;
+    border-radius: 15px;
+}
+
+.cards-info .card-total-expense .card-border-icon {
+    background-color: #f44336;
+}
+
+.cards-info .card-total-income .card-border-icon {
+    background-color: #4caf50;
+}
+
+.cards-info .card-balance-positive .card-border-icon {
+    background-color: #4caf50;
+}
+
+.cards-info .card-ammount .card-border-icon {
+    background-color: #0076be;
+}
+
+.card-info.card-total-expense,
+.card-info.card-total-income,
+.card-info.card-balance-positive,
+.card-info.card-ammount {
+    box-shadow: 0px 4px 2px -4px rgba(0, 0, 0, 0.75);
+    width: calc(22% - 15px);
+    margin-left: 14px;
+    cursor: default;
+}
+
+.card-border-icon.color-account {
+    font-size: 22px;
+    margin-left: -14px;
+    color: #fff;
+    height: 60px;
+    width: 60px;
+    position: absolute;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mb-55 {
+    margin-bottom: 5.5rem !important;
+}
+
+.MuiPaper-root {
+    color: rgba(0, 0, 0, 0.87);
+    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    background-color: #fff;
+}
+
+.MuiPaper-elevation1 {
+    box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
+}
+
+.MuiPaper-rounded {
+    border-radius: 25px;
+}
+
+.cards-info .card-total-expense .card-description, 
+.cards-info .card-total-income .card-description,
+.cards-info .card-balance-positive .card-description,
+.cards-info .card-ammount .card-description {
+    color: #a1a1a1;
+}
+
+.cards-info .card-info > div:last-child span {
+    text-align: right;
+}
+
+.cards-info .card-info .card-description {
+    color: #757575;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    text-align: start;
+}
+
+.cards-info .card-total-expense .card-content .card-value {
+    color: #f44336;
+}
+
+.cards-info .card-total-income .card-content .card-value {
+    color: #4caf50;
+}
+
+.cards-info .card-balance-positive .card-content .card-value {
+    color: #4caf50;
+}
+
+.cards-info .card-ammount .card-content .card-value {
+    color: #0076be;
+}
+
+.cards-info .card-info .card-value {
+    font-weight: 700;
+    font-size: 1.1em;
+}
+
+.row-hover:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+}

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TitaniumExpress | Coletas e Entregas</title>
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css?dp-version=1578490236" />
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/v4-shims.css">
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="./js/credentials.js"></script>
+</head>
+<body>
+    <div class="row h-100 w-100 m-0">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 p-0">
+            <div class="card border-0 bg-white rounded-0">
+                <div class="card-header bg-white border-0">
+                    <div class="form-row ">
+                        <h4 class="card-title">Nova Corrida</h4>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <!-- start form -->
+                    <form method="post" name="google-sheet" autocomplete="on">
+                        <div class="form-row border-bottom">
+                            <div class="form-group col-12">
+                                <label for="selectCompany" class="form-label">Empresa</label>
+                                <select name="selectCompany" id="selectCompany" class="form-control">
+                                    <option value="" selected disabled>Selecione uma empresa</option>
+                                    <option value="Agência Kobe">Agência Kobe</option>
+                                    <option value="Âmbar Bastardo">Âmbar Bastardo</option>
+                                    <option value="Combat Informática">Combat Informática</option>
+                                    <option value="Dona Glam">Dona Glam</option>
+                                    <option value="Novideia">Novideia</option>
+                                    <option value="Particular">Particular</option>
+                                    <option value="Souhait">Souhait</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row border-bottom mt-2">
+                            <div class="form-group col-6">
+                                <label for="clientName" class="form-label">Cliente</label>
+                                <input type="text" name="clientName" id="clientName" placeholder="Digite o nome da/do Cliente" class="form-control mb-3">
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="data" class="form-label">Data</label>
+                                <input type="date" name="data" id="data" class="form-control mb-2">
+                            </div>
+                        </div>
+                        <div id="route">
+                            <div id="waypoint0" class="form-row border-bottom waypoints mt-3">
+                                <span class="label label-rounded">A</span><span class="label-text">Retirada</span>
+                                <div class="form-group col-12 mt-2">
+                                    <label for="inputAddressWaypoint0" class="form-label"><small class="text-muted">Endereço</small></label>
+                                    <input type="text" class="form-control" name="inputAddressWaypoint0" id="inputAddressWaypoint0" placeholder="Digite o nome da rua" value="" >
+                                </div>
+                                <div class="form-group col-6 d-flex align-self-center">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" name="checkCompWaypoint0" id="checkCompWaypoint0">
+                                        <label for="checkCompWaypoint0" class="form-check-label"><small class="text-muted">Sem Complemento</small></label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-6">
+                                    <label for="inputCompWaypoint0" class="form-label"><small class="text-muted">Complemento</small></label>
+                                    <input type="text" class="form-control" name="inputCompWaypoint0" id="inputCompWaypoint0" placeholder="Apto 101">
+                                </div>
+                                <div class="form-group col-12 mt-2">
+                                    <label for="obstWaypoint0" class="form-label"><small class="text-muted">Observação</small></label>
+                                    <input type="text" class="form-control" name="obsWaypoint0" id="obsWaypoint0" placeholder="Digite alguma observação">
+                                </div>
+                            </div>
+                            <div id="waypoint1" class="form-row border-bottom waypoints mt-3">
+                                <span class="label label-rounded">B</span><span class="label-text">Adicionar Destino</span>
+                                <div class="form-group col-12 mt-2">
+                                    <label for="inputAddressWaypoint1" class="form-label"><small class="text-muted">Endereço</small></label>
+                                    <input type="text" class="form-control" name="inputAddressWaypoint1" id="inputAddressWaypoint1" placeholder="Digite o nome da rua">
+                                </div>
+                                <div class="form-group col-6 d-flex align-self-center">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" name="checkCompWaypoint1" id="checkCompWaypoint1">
+                                        <label for="checkCompWaypoint1" class="form-check-label"><small class="text-muted">Sem Complemento</small></label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-6">
+                                    <label for="inputCompWaypoint1" class="form-label"><small class="text-muted">Complemento</small></label>
+                                    <input type="text" class="form-control" name="inputCompWaypoint1" id="inputCompWaypoint1" placeholder="Apto 101">
+                                </div>
+                                <div class="form-group col-12 mt-2">
+                                    <label for="obstWaypoint1" class="form-label"><small class="text-muted">Observação</small></label>
+                                    <input type="text" class="form-control" name="obsWaypoint1" id="obsWaypoint1" placeholder="Digite alguma observação">
+                                </div>
+                            </div>
+                            <div class="form-row mt-4">
+                                <div class="card col-12">
+                                    <div class="card-body">
+                                        <div class="row text-center">
+                                            <div class="col-4">
+                                                <small><strong>Tempo</strong></small>
+                                                <input type="number" name="durationRoute" id="durationRoute" class="text-center bg-transparent border-0 details">
+                                            </div>
+                                            <div class="col-4">
+                                                <small><strong>Distância</strong></small>
+                                                <input type="number" name="lengthRoute" id="lengthRoute" class="text-center bg-transparent border-0 details" step="0.01">
+                                            </div>
+                                            <div class="col-4">
+                                                <small><strong>Valor</strong></small>
+                                                <input type="number" name="priceRoute" id="priceRoute" class="text-center bg-transparent border-0 details" step="0.01">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="btnRemove" class="mb-3 mt-3">
+                            <div class="form-row">
+                                <div class="col-12 justify-content-center d-flex align-self-center">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" name="checkReturn" id="checkReturn">
+                                        <label for="checkReturn" class="form-check-label"><small class="text-muted">Adicionar Retorno</small></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row mt-4">
+                            <button type="submit" class="btn btn-lg btn-block btn-titanium" id="btn-next">Salvar</button>
+                        </div>
+                    </form>
+                    <!-- finish form -->
+                </div>
+                <div class="card-footer bg-white">
+                    <div class="form-row">
+                        <span class="text-sm">2020 &copy Titanium Express</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 bg-dark">
+            <div id="mapContainer" class="vh-100" style="width: 100%; height: 100%; align-self: center;"></div>
+        </div>
+    </div>
+<script>
+    const database_titanium = 'https://script.google.com/macros/s/AKfycbzp-yGm_lWV6JhCEdeQRyEJnOvQ7U41EKNdncFPq8WKPRb9aHNk/exec';
+    const database_kobe = 'https://script.google.com/macros/s/AKfycbwLIXVynFM4_YnDFafQdw8oB5jyIydKjKchiTCTrjMVU-Wiw0i1/exec';
+    const database_ambar = 'https://script.google.com/macros/s/AKfycbxzBzD7vhddfJvI16FhrtFS2v_SoukgdeS7WF70DNvv9-fID1Az/exec';
+    const database_combat = 'https://script.google.com/macros/s/AKfycby462dr6J3vddFmfqye2HcMYqWF-hEPhnhM9_Vgh6uNUMU5_oM/exec';
+    const database_donaglam = 'https://script.google.com/macros/s/AKfycbzrxhD7al50dQCjt3OcczEcUwXMR2jwB9wAOladr1LSc-6aqXy2/exec';
+    const database_novideia = 'https://script.google.com/macros/s/AKfycby4iqCXuX8IxKN59x7KnHVnFKlEqhREdAcFfA_rSrxUDHcXjmg/exec';
+    const database_particular = 'https://script.google.com/macros/s/AKfycbxGq9uY4DAZBqARunurht7nZPqoP0NsLOooqNeF1F-0Csd-2fg/exec';
+    const database_souhait = 'https://script.google.com/macros/s/AKfycbyi8kZ512J3SSUab0ZX-Qpyoy0aOy4kZsYobXdDUlttz2MbxLF-/exec';
+
+    const company = document.querySelector('#selectCompany');
+    
+    const form = document.forms['google-sheet']
+    
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+
+        fetch(database_titanium, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            switch (company.value) {
+                case 'Agência Kobe':
+                    fetch(database_kobe, { method: 'POST', body: new FormData(form)})
+                    .then(response => {
+                        alert(`Corrida de ${company.value} foi salva com sucesso.`);
+                        location.reload();
+                    });
+                    break;
+                case 'Âmbar Bastardo':
+                    fetch(database_ambar, { method: 'POST', body: new FormData(form)})
+                    .then(response => {
+                        alert(`Corrida de ${company.value} foi salva com sucesso.`);
+                        location.reload();
+                    });
+                    break;
+                case 'Combat Informática':
+                    fetch(database_combat, { method: 'POST', body: new FormData(form)})
+                    .then(response => {
+                        alert(`Corrida de ${company.value} foi salva com sucesso.`);
+                        location.reload();
+                    });
+                    break;
+                case 'Dona Glam':
+                    fetch(database_donaglam, { method: 'POST', body: new FormData(form)})
+                    .then(response => {
+                        alert(`Corrida de ${company.value} foi salva com sucesso.`);
+                        location.reload();
+                    });
+                    break;
+                case 'Novideia':
+                    fetch(database_novideia, { method: 'POST', body: new FormData(form)})
+                    .then(response => {
+                        alert(`Corrida de ${company.value} foi salva com sucesso.`);
+                        location.reload();
+                    });
+                    break;
+                case 'Particular':
+                    fetch(database_particular, { method: 'POST', body: new FormData(form)})
+                    .then(response => {
+                        alert(`Corrida de ${company.value} foi salva com sucesso.`);
+                        location.reload();
+                    });
+                    break;
+                case 'Souhait':
+                    fetch(database_souhait, { method: 'POST', body: new FormData(form)})
+                    .then(response => {
+                        alert(`Corrida de ${company.value} foi salva com sucesso.`);
+                        location.reload();
+                    });
+                    break;
+                default:
+                    alert('Selecione uma empresa.');
+            }
+        });
+
+        
+
+        
+    })
+</script>  
+
+
+</script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<script src='./js/bootstrap.js' type="text/javascript" chartset="utf-8"></script>
+<script src='./js/functions.js' type="text/javascript" chartset="utf-8"></script>
+<script src="./js/mapFunctions.js" type="text/javascript" chartset="utf-8"></script>
+</body>
+</html>
