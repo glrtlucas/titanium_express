@@ -31,6 +31,16 @@
                     <!-- start form -->
                     <form method="post" name="google-sheet" autocomplete="on">
                         <div class="form-row border-bottom">
+                            <div class="form-group col-12 mb-2">
+                                <label for="routeType" class="form-label">Tipo da Rota:</label>
+                                <select name="routeType" id="routeType" class="form-control">
+                                    <option value="" selected disabled>Selecione o tipo desta rota</option>
+                                    <option value="Entrega">Entrega</option>
+                                    <option value="Coleta">Coleta</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row border-bottom mt-2">
                             <div class="form-group col-12">
                                 <label for="selectCompany" class="form-label">Empresa</label>
                                 <select name="selectCompany" id="selectCompany" class="form-control">

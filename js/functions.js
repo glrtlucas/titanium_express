@@ -54,7 +54,6 @@ const checkReturnValidation = (check) => {
     } else {
         returnKey = false;
     }
-    console.log('gay')
     calculateReturnPrice(returnKey);
 }
 
@@ -75,4 +74,139 @@ inputAddressWaypoint1.addEventListener('input', () => searchAddressWaypoint.wayp
 inputAddressWaypoint1.addEventListener('blur', () => setPositions());
 
 checkReturn.addEventListener('click', () => checkReturnValidation(checkReturn.checked));
+
+let routeType = document.querySelector('#routeType');
+let empresa = document.querySelector('#selectCompany');
+
+empresa.addEventListener('change', () => setAddrCompany());
+
+function setAddrCompany() {
+    if (routeType.value == 'Entrega') {
+        switch (empresa.value) {
+            case 'Agência Kobe':
+                inputAddressWaypoint1.value = '';
+                inputCompWaypoint1.value = '';
+                checkCompWaypoint1.checked = false;
+                inputAddressWaypoint0.value = 'R. Visconde do Rio Branco, 1189';
+                inputCompWaypoint0.value = 'Conj. C';
+                checkCompWaypoint0.checked = false;
+            break;
+            case 'Âmbar Bastardo':
+                inputAddressWaypoint1.value = '';
+                inputCompWaypoint1.value = '';
+                checkCompWaypoint1.checked = false;
+                inputAddressWaypoint0.value = 'R. Comendador Araújo, 845';
+                inputCompWaypoint0.value = 'Lj 2';
+                checkCompWaypoint0.checked = false;
+            break;
+            case 'Combat Informática':
+                inputAddressWaypoint1.value = '';
+                inputCompWaypoint1.value = '';
+                checkCompWaypoint1.checked = false;
+                inputAddressWaypoint0.value = 'R. Holanda, 1226';
+                inputCompWaypoint0.value = 'Lj 2';
+                checkCompWaypoint0.checked = false;
+            break;
+            case 'Dona Glam':
+                inputAddressWaypoint1.value = '';
+                inputCompWaypoint1.value = '';
+                checkCompWaypoint1.checked = false;
+                inputAddressWaypoint0.value = 'R. Padre Anchieta, 2454';
+                inputCompWaypoint0.value = 'Lj 18';
+                checkCompWaypoint0.checked = false;
+            break;
+            case 'Novideia':
+                inputAddressWaypoint1.value = '';
+                inputCompWaypoint1.value = '';
+                checkCompWaypoint1.checked = false;
+                inputAddressWaypoint0.value = 'R. Pref. Erasto Gaertner, 97';
+                inputCompWaypoint0.value = '';
+                checkCompWaypoint0.checked = true;
+            break;
+            case 'Particular':
+                inputAddressWaypoint1.value = '';
+                inputCompWaypoint1.value = '';
+                checkCompWaypoint1.checked = false;
+                inputAddressWaypoint0.value = '';
+                inputCompWaypoint0.value = '';
+                checkCompWaypoint0.checked = false;
+            break;
+            case 'Souhait':
+                inputAddressWaypoint1.value = '';
+                inputCompWaypoint1.value = '';
+                checkCompWaypoint1.checked = false;
+                inputAddressWaypoint0.value = 'R. Mal. José Bernardino Bormann, 1492';
+                inputCompWaypoint0.value = 'Ap 802';
+                checkCompWaypoint0.checked = false;
+            break;
+        }
+    } else if (routeType.value == 'Coleta') {
+            switch (empresa.value) {
+                case 'Agência Kobe':
+                    inputAddressWaypoint0.value = '';
+                    inputCompWaypoint0.value = '';
+                    checkCompWaypoint0.checked = false;
+                    inputAddressWaypoint1.value = 'R. Visconde do Rio Branco, 1189';
+                    inputCompWaypoint1.value = 'Conj. C';
+                    checkCompWaypoint1.checked = false;
+                break;
+                case 'Âmbar Bastardo':
+                    inputAddressWaypoint0.value = '';
+                    inputCompWaypoint0.value = '';
+                    checkCompWaypoint0.checked = false;;
+                    inputAddressWaypoint1.value = 'R. Comendador Araújo, 845';
+                    inputCompWaypoint1.value = 'Lj 2';
+                    checkCompWaypoint1.checked = false;
+                break;
+                case 'Combat Informática':
+                    inputAddressWaypoint0.value = '';
+                    inputCompWaypoint0.value = '';
+                    checkCompWaypoint0.checked = false;
+                    inputAddressWaypoint1.value = 'R. Holanda, 1226';
+                    inputCompWaypoint1.value = 'Lj 2';
+                    checkCompWaypoint1.checked = false;
+                break;
+                case 'Dona Glam':
+                    inputAddressWaypoint0.value = '';
+                    inputCompWaypoint0.value = '';
+                    checkCompWaypoint0.checked = false;
+                    inputAddressWaypoint1.value = 'R. Padre Anchieta, 2454';
+                    inputCompWaypoint1.value = 'Lj 18';
+                    checkCompWaypoint1.checked = false;
+                break;
+                case 'Novideia':
+                    inputAddressWaypoint0.value = '';
+                    inputCompWaypoint0.value = '';
+                    checkCompWaypoint0.checked = false;
+                    inputAddressWaypoint1.value = 'R. Pref. Erasto Gaertner, 97';
+                    inputCompWaypoint1.value = '';
+                    checkCompWaypoint1.checked = true;
+                break;
+                case 'Particular':
+                    inputAddressWaypoint0.value = '';
+                    inputCompWaypoint0.value = '';
+                    checkCompWaypoint0.checked = false;
+                    inputAddressWaypoint1.value = '';
+                    inputCompWaypoint1.value = '';
+                    checkCompWaypoint1.checked = false;
+                break;
+                case 'Souhait':
+                    inputAddressWaypoint0.value = '';
+                    inputCompWaypoint0.value = '';
+                    checkCompWaypoint0.checked = false;
+                    inputAddressWaypoint1.value = 'R. Mal. José Bernardino Bormann, 1492';
+                    inputCompWaypoint1.value = 'Ap 802';
+                    checkCompWaypoint1.checked = false;
+                break;
+            }
+    }
+}
+
+routeType.addEventListener('change', () => {
+    setAddrCompany();
+});
+
+
+
+
 
